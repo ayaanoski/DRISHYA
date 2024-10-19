@@ -1,0 +1,16 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+     /* Prevent scroll bars */
+  }
+  
+  body {
+    background-image: url('./assets/homebg.png'); /* Replace with the path to your image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Press Start 2P', cursive;
+  }
+  

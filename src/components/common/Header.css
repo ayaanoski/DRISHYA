@@ -1,0 +1,40 @@
+/* header.css */
+
+.header {
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px; /* Padding for better spacing */
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-family: 'Press Start 2P', cursive;
+    margin-right: auto; /* Pushes the logo to the extreme left */
+  }
+  
+  .nav {
+    margin-left: auto; /* Moves the nav items to the extreme right */
+  }
+  
+  .nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px; /* Space between the navigation items */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav ul li a {
+    text-decoration: none;
+    color: #fff; /* White color for links */
+    font-size: 18px;
+    transition: color 0.3s ease;
+  }
+  
+  .nav ul li a:hover {
+    color: #999; /* Light grey color on hover */
+  }
+  

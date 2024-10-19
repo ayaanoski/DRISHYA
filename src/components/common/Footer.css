@@ -1,0 +1,30 @@
+/* footer.css */
+
+.footer {
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    font-family: 'FRESH START 2P', sans-serif;
+  }
+  
+  .footer-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .footer-nav ul li a {
+    text-decoration: none;
+    color: #fff; /* White color for links */
+    font-size: 18px;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-nav ul li a:hover {
+    color: #999; /* Light grey color on hover */
+  }
+  
