@@ -1,8 +1,34 @@
-# React + Vite
+# DRISHYA
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+DRISHYA is a React-based application designed to enhance user interaction and engagement through visual storytelling. It aims to provide a platform for users to create, share, and explore content in a visually appealing way.
 
-Currently, two official plugins are available:
+## Installation Instructions
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/ayaanoski/DRISHYA.git
+   cd DRISHYA
+   ```
+
+2. **Install Dependencies:**
+   Use either npm or yarn:
+   ```bash
+   npm install
+   ```
+   or
+   ```bash
+   yarn install
+   ```
+
+3. **Run the Application:**
+   Start the development server:
+   ```bash
+   npm run dev
+   ```
+   or
+   ```bash
+   yarn dev
+   ```
+
+For more details, visit the [DRISHYA GitHub page](https://github.com/ayaanoski/DRISHYA).
