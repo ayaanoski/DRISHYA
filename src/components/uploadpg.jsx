@@ -4,8 +4,6 @@ import Header from './common/Header'; // Adjust the path as necessary
 import Footer from './common/Footer'; // Adjust the path as necessary
 
 const UploadPage = () => {
-
-  
   const videoRef = useRef(null);
   const mediaStreamRef = useRef(null); // Reference for the media stream
   const [isCameraActive, setIsCameraActive] = useState(false); 
@@ -13,6 +11,7 @@ const UploadPage = () => {
   const [faceFile, setFaceFile] = useState(null);
   const [detectedFaces, setDetectedFaces] = useState([]);
   const [detectedFaceImages, setDetectedFaceImages] = useState([]); // New state for detected images
+  const [isLoading, setIsLoading] = useState(false); // Loading state
 
   const handleVideoUpload = (event) => {
     setVideoFile(event.target.files[0]);
@@ -21,6 +20,7 @@ const UploadPage = () => {
   const handleFaceUpload = (event) => {
     setFaceFile(event.target.files[0]);
   };
+
   const handleTryRealTime = async () => {
     try {
       // Request access to the user's camera
@@ -47,6 +47,7 @@ const UploadPage = () => {
       setIsCameraActive(false); // Set camera status to inactive
     }
   };
+
   const handleUpload = async () => {
     if (!videoFile || !faceFile) {
       alert('Please upload both a video and a face image.');
@@ -58,6 +59,7 @@ const UploadPage = () => {
     formData.append('face', faceFile);
 
     try {
+      setIsLoading(true); // Set loading to true when the upload starts
       const response = await axios.post('http://127.0.0.1:5000/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -68,6 +70,8 @@ const UploadPage = () => {
     } catch (error) {
       console.error('Error uploading files:', error.response?.data || error.message);
       alert('Error uploading files');
+    } finally {
+      setIsLoading(false); // Set loading to false after the upload finishes
     }
   };
 
@@ -86,6 +90,8 @@ const UploadPage = () => {
         padding: 0,
         width: '100%',
         background: '#000000',
+        opacity: isLoading ? 0.5 : 1, // Reduce opacity when loading
+        pointerEvents: isLoading ? 'none' : 'auto', // Prevent interactions when loading
       }}
     >
       <Header />
@@ -209,7 +215,6 @@ const UploadPage = () => {
             }}
           >
             <h3 style={{ fontSize: '16px' }}>Try Real Time</h3>
-            {/* Add your real-time functionality here */}
             <button
               onClick={handleTryRealTime}
               style={{
@@ -244,7 +249,6 @@ const UploadPage = () => {
           Upload
         </button>
         
-
         {/* Display detected faces */}
         {detectedFaces.length > 0 && (
           <div style={{ marginTop: '20px' }}>
@@ -262,8 +266,8 @@ const UploadPage = () => {
               ))}
             </div>
           </div>
-           
         )}
+        
         <video
           ref={videoRef}
           style={{
@@ -290,12 +294,34 @@ const UploadPage = () => {
               cursor: 'pointer',
               fontFamily: "'Press Start 2P', cursive",
               marginTop: '10px',
-              marginBottom: '40px', 
-              // Increased bottom margin for more padding
+              marginBottom: '40px',
             }}
           >
             Terminate
           </button>
+        )}
+
+        {/* Loading Overlay */}
+        {isLoading && (
+          <div
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              backgroundColor: 'rgba(0, 0, 0, 0.8)',
+              color: '#FF5722',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              zIndex: 9999,
+              fontSize: '24px',
+              fontFamily: "'Press Start 2P', cursive",
+            }}
+          >
+            Loading...
+          </div>
         )}
       </main>
 
